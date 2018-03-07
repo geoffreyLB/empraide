@@ -1,0 +1,89 @@
+{
+  "name": "empraide",
+  "productName": "Empraide",
+  "version": "0.0.0",
+  "description": "A software to calculate loan parameters",
+  "main": "main.js",
+  "scripts": {
+    "start": "cross-env PORT=8080 webpack-dev-server --config webpack.development.js --progress",
+    "electron": "cross-env NODE_ENV=development PORT=8080 electron .",
+    "test": "jest",
+    "build": "npm it && webpack --config webpack.production.js --progress",
+    "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "directories": {
+      "buildResources": "resources"
+    },
+    "files": [
+      "build/bundle.js",
+      "build/index.html",
+      "main.js",
+      "!node_modules"
+    ],
+    "mac": {
+      "artifactName": "${productName}-${version}-mac.${ext}",
+      "category": "public.app-category.utilities",
+      "target": "zip"
+    },
+    "win": {
+      "artifactName": "${productName}-${version}-windows.${ext}",
+      "target": "zip"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattp94/empraide.git"
+  },
+  "author": "Matthieu Puibaraud <matthieu.puibaraud@isep.fr> (https://github.com/mattp94)",
+  "license": "MIT",
+  "dependencies": {
+    "lodash.round": "^4.0.4",
+    "material-ui": "^1.0.0-beta.36",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-easy-validation": "^2.0.0-alpha.1",
+    "validator": "^9.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.18",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.3",
+    "electron": "^1.8.3",
+    "electron-builder": "^20.3.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "html-webpack-plugin": "^3.0.6",
+    "jest": "^22.4.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1",
+    "webpack-merge": "^4.1.2"
+  },
+  "jest": {
+    "verbose": true,
+    "setupFiles": [
+      "./test.setup.js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "src/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  }
+}
