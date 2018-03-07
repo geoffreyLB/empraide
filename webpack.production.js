@@ -7,8 +7,14 @@ const webpack = require('webpack')
 const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
+    output: {
+        path: path.resolve(__dirname, 'build'),
+        filename: 'bundle.js'
+    },
     plugins: [
-        new CleanWebpackPlugin(['build']),
+        new CleanWebpackPlugin([
+            'build'
+        ]),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
