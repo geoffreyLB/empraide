@@ -6,6 +6,7 @@ const devMode = process.env.NODE_ENV === 'development'
 const port = process.env.PORT
 const isMac = process.platform === 'darwin'
 
+const appName = app.getName()
 const appUrl = devMode ? `http://localhost:${port}/` : url.format({
     pathname: path.resolve(__dirname, 'build/index.html'),
     protocol: 'file:',
@@ -104,11 +105,11 @@ const template = [
 
 if (isMac)
     template.unshift({
-        label: app.getName(),
+        label: appName,
         submenu: [
-            { label: `À propos d'${app.getName()}`, role: 'about' },
+            { label: `À propos d'${appName}`, role: 'about' },
             { type: 'separator' },
-            { label: `Quitter ${app.getName()}`, role: 'quit' }
+            { label: `Quitter ${appName}`, role: 'quit' }
         ]
     })
 
