@@ -1,7 +1,7 @@
 {
   "name": "empraide",
   "productName": "Empraide",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "An application to calculate loan parameters",
   "main": "main.js",
   "scripts": {
